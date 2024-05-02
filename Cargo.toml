@@ -46,7 +46,7 @@ features = ["derive"]
 libc = "0.2"
 
 [target.'cfg(windows)'.dependencies]
-autopilot = "0.4.0"
+winapi = { version = "0.3.4", features = ["libloaderapi", "minwindef", "winbase", "winuser"] }
 
 [features]
 default = ["sqlite-bundled"]

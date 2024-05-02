@@ -1,6 +1,7 @@
 #[cfg(not(windows))]
 use libc;
 
+
 // Should we be using https://docs.rs/libc/0.2.44/libc/fn.ioctl.html instead?
 #[cfg(not(windows))]
 extern "C" {
@@ -20,5 +21,5 @@ pub fn use_tiocsti(string: &str) {
 
 #[cfg(windows)]
 pub fn use_tiocsti(string: &str) {
-    autopilot::key::type_string(string, &[], 0.0, 0.0);
+    crate::autopilot::type_string(string);
 }

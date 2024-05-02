@@ -17,3 +17,4 @@ pub mod time;
 pub mod trainer;
 pub mod training_cache;
 pub mod training_sample_generator;
+pub mod autopilot;
