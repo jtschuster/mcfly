@@ -161,7 +161,7 @@ jobs:
       - run: rustup.exe target add ${{ matrix.target }}
 
       - name: Build Release
-        run: cargo.exe build ${{ matrix.target }} -r
+        run: cargo.exe build --target ${{ matrix.target }} --release
 
       - name: Zip Binary
         run: 7z a ${{ env.BIN }}.zip target/${{ matrix.target }}/release/${{ env.BIN }}.exe
