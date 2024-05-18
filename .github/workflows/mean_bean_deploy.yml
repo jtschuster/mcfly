@@ -164,7 +164,7 @@ jobs:
         run: cargo.exe build --target ${{ matrix.target }} --release
 
       - name: Zip Binary
-        run: 7z a ${{ env.BIN }}.zip target/${{ matrix.target }}/release/${{ env.BIN }}.exe
+        run: 7z a ${{ env.BIN }}.zip ./target/${{ matrix.target }}/release/${{ env.BIN }}.exe
 
       - uses: XAMPPRocky/create-release@v1.0.2
         id: create_release
