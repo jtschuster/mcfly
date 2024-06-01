@@ -443,6 +443,10 @@ McFly stores its SQLite database in the standard location for the OS. On OS X, t
 
 If you have a very large history database and you notice that McFly launches slowly, you can set `MCFLY_HISTORY_LIMIT` to something like 10000 to limit how many records are considered when searching. In this example, McFly would search only the latest 10,000 entries.
 
+### Bash TIOCSTI
+
+Starting with Linux kernel version 6.2, some systems have disabled TIOCSTI (which McFly previously used to write the selected command). McFly works around this issue by using two "dummy" keybindings, which default to `Meta+1` and `Meta+2`. If you are using either of these for another purpose, you can set the `MCFLY_BASH_SEARCH_KEYBINDING` and `MCFLY_BASH_ACCEPT_LINE_KEYBINDING`, respectively, to something you are not using. If you would prefer to use the legacy TIOCSTI behavior, you can enable it by setting the `sysctl` variable `dev.tty.legacy_tiocsti` to `1` on your system and set the `MCFLY_BASH_USE_TIOCSTI` bash variable to `1`.
+
 ## HISTTIMEFORMAT
 
 McFly currently doesn't parse or use `HISTTIMEFORMAT`.
@@ -471,7 +475,7 @@ Contributions and bug fixes are encouraged! However, we may not merge PRs that i
 1. Edit `Cargo.toml` and bump the version.
 1. Edit CHANGELOG.txt
 1. Run `cargo clippy` and `cargo fmt`.
-1. Recompile (`cargo build`).
+1. Recompile (`cargo build`) and test (`cargo test`)
 1. `git add -p`
 1. `git ci -m 'Bumping to vx.x.x'`
 1. `git tag vx.x.x`
